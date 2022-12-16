@@ -1,4 +1,4 @@
-import StoreServiceConsumer from '../StoreServiceContext';
+import { StoreServiceConsumer } from '../StoreServiceContext';
 
 
 const WithStoreService = () => (Component) => {
@@ -6,8 +6,8 @@ const WithStoreService = () => (Component) => {
 		return (
 			<StoreServiceConsumer>
 				{
-					(StoreService) => {
-						return <Component {...props} StoreService={StoreService} />
+					(storeService) => {
+						return <Component {...props} storeService={storeService} />
 					}
 				}
 			</StoreServiceConsumer>

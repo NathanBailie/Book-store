@@ -1,0 +1,37 @@
+.header {
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+	background: Chocolate;
+	padding: 10px 15px;
+	user-select: none;
+
+	&__link {
+		text-decoration: none;
+		color: Ivory;
+		font-weight: bold;
+		font-size: 22px;
+		background: Chocolate;
+
+		&:not(:last-child) {
+			margin-right: 7px;
+		}
+
+		&:hover {
+			color: NavajoWhite;
+			text-decoration: underline NavajoWhite 3px;
+		}
+
+		&_active {
+			color: Khaki;
+			text-decoration: underline Khaki 3px;
+			font-style: italic;
+
+			// font-size: 24px;
+			&:hover {
+				color: Khaki;
+				text-decoration: underline Khaki 3px;
+			}
+		}
+	}
+}

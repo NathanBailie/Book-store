@@ -3,4 +3,17 @@
 	margin: 0;
 	padding: 0;
 	background: AntiqueWhite;
+	font-family: sans-serif;
+}
+
+.app {
+	padding: 0 15px;
+}
+
+.container {
+	margin: 0 auto;
+	border: 2px solid darkorange;
+	border-top: none;
+	border-radius: 0px 0px 15px 15px;
+	padding: 5px 15px;
 }
