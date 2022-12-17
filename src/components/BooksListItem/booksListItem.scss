@@ -1,0 +1,144 @@
+.booksListItem {
+	display: grid;
+	grid-template: auto / repeat(auto-fit, 300px);
+	gap: 15px;
+	justify-content: center;
+
+	&__book {
+		display: flex;
+		width: 300px;
+		height: 180px;
+		text-align: center;
+		position: relative;
+	}
+
+	&__cover {
+		width: 50%;
+		height: 100%;
+		border: 1px solid brown;
+		border-radius: 7px 0px 0px 7px;
+		border-right: none;
+
+
+		img {
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
+			border-radius: 7px 0px 0px 7px;
+
+		}
+	}
+
+	&__descr {
+		width: 50%;
+		height: 100%;
+		padding: 10px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-between;
+		border: 1px solid brown;
+		border-radius: 0px 7px 7px 0px;
+		border-left: none;
+
+
+
+		h3 {
+			max-height: 110px;
+			font-size: 18px;
+			color: #4f83e4;
+			display: flex;
+			align-items: flex-start;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			text-decoration: underline 1px;
+		}
+
+		h4 {
+			font-style: italic;
+			font-size: 16px;
+			color: rgb(58, 58, 58);
+		}
+
+		p {
+			color: red;
+			font-weight: bolder;
+		}
+	}
+
+	&__button {
+		position: absolute;
+		bottom: 10px;
+		right: 10px;
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		border: 2px solid green;
+		font-size: 18px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+		user-select: none;
+
+		&:hover {
+			transform: scale(1.1);
+			border: none;
+		}
+
+		&:active {
+			transform: scale(0.95);
+		}
+
+		span {
+			background: green;
+			position: absolute;
+
+			&:first-child {
+				width: 10px;
+				height: 2px;
+			}
+
+			&:last-child {
+				width: 2px;
+				height: 10px;
+			}
+		}
+
+		&:hover {
+			background: green;
+			box-shadow: 0px 0px 3px 1px green;
+
+			span {
+				background: white;
+			}
+		}
+
+		&_added {
+			border: 2px solid red;
+
+			span {
+				background: red;
+
+				&:first-child {
+					width: 10px;
+					height: 2px;
+				}
+
+				&:last-child {
+					display: none;
+				}
+			}
+
+			&:hover {
+				background: red;
+				box-shadow: 0px 0px 3px 1px red;
+
+				span {
+					background: white;
+				}
+			}
+		}
+
+	}
+}
