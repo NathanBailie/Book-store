@@ -9,17 +9,11 @@ import { connect } from 'react-redux';
 import { compose } from '../../utils';
 
 
-const BooksList = ({ storeService, dataLoaded, dataRequested, dataError, data, loading, error }) => {
+const BooksList = ({ data, loading, error, fetchData }) => {
 	const [books, setBooks] = useState();
 
 	useEffect(() => {
-		dataRequested();
-		storeService
-			.getData()
-			.then((response) => {
-				dataLoaded(response)
-			})
-			.catch((error) => dataError(error))
+		fetchData()
 	}, []);
 
 	useEffect(() => {
@@ -38,18 +32,30 @@ const BooksList = ({ storeService, dataLoaded, dataRequested, dataError, data, l
 		return <ErrorIndicator />;
 	};
 	if (!loading && !error) {
-		return <div className="booksList">
-			<BooksListItem books={books} />
-		</div>;
-	}
+		return (
+			<div className="booksList">
+				<BooksListItem books={books} />
+			</div>
+		);
+	};
 };
-
 
 const mapStateToProps = ({ data, loading, error }) => {
 	return { data, loading, error }
 };
 
-const mapDispatchToProps = { dataLoaded, dataRequested, dataError };
+const mapDispatchToProps = (dispatch, ownProps) => {
+	const { storeService } = ownProps;
+	return {
+		fetchData: () => {
+			dispatch(dataRequested());
+			storeService
+				.getData()
+				.then((response) => { dispatch(dataLoaded(response)) })
+				.catch((error) => dispatch(dataError(error)))
+		}
+	};
+};
 
 export default compose(
 	WithStoreService(),
