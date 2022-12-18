@@ -1,10 +1,23 @@
-const booksLoaded = (newBooks) => {
+const dataRequested = () => {
 	return {
-		type: 'BOOKS_LOADED',
-		payload: newBooks
+		type: 'DATA_REQUESTED'
+	};
+};
+const dataLoaded = (newData) => {
+	return {
+		type: 'DATA_LOADED',
+		payload: newData
+	};
+};
+const dataError = (error) => {
+	return {
+		type: 'DATA_ERROR',
+		payload: error
 	};
 };
 
 export {
-	booksLoaded
+	dataLoaded,
+	dataRequested,
+	dataError
 };

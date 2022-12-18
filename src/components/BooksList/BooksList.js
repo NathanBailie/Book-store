@@ -1,28 +1,57 @@
 import './booksList.scss';
 import BooksListItem from '../BooksListItem';
+import Spinner from '../Spinner';
+import ErrorIndicator from '../ErrorIndicator';
+import { WithStoreService } from '../HOC';
+import { dataLoaded, dataRequested, dataError } from '../../actions';
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { compose } from '../../utils';
 
-const BooksList = ({ data }) => {
-	if (data.length === 0) {
-		return;
+
+const BooksList = ({ storeService, dataLoaded, dataRequested, dataError, data, loading, error }) => {
+	const [books, setBooks] = useState();
+
+	useEffect(() => {
+		dataRequested();
+		storeService
+			.getData()
+			.then((response) => {
+				dataLoaded(response)
+			})
+			.catch((error) => dataError(error))
+	}, []);
+
+	useEffect(() => {
+		if (data.length > 0) {
+			const activeItem = data.filter(item => item.active === true);
+			const [{ books }] = activeItem;
+			setBooks(books);
+		}
+	}, [data]);
+
+
+	if (loading) {
+		return <Spinner />;
 	};
-
-	const item = data.filter(item => item.active === true);
-	const [{ books }] = item;
-
-	return (
-		<div className="booksList">
+	if (error) {
+		return <ErrorIndicator />;
+	};
+	if (!loading && !error) {
+		return <div className="booksList">
 			<BooksListItem books={books} />
-		</div>
-	);
+		</div>;
+	}
 };
 
 
-const mapStateToProps = (state) => {
-	return {
-		data: state
-	};
+const mapStateToProps = ({ data, loading, error }) => {
+	return { data, loading, error }
 };
 
-export default connect(mapStateToProps)(BooksList);
+const mapDispatchToProps = { dataLoaded, dataRequested, dataError };
+
+export default compose(
+	WithStoreService(),
+	connect(mapStateToProps, mapDispatchToProps)
+)(BooksList);

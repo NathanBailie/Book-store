@@ -1,13 +1,16 @@
 import './booksListItem.scss';
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import cover from './cover.jpg';
+// import cover from './cover.jpg';
 
 const BooksListItem = ({ books }) => {
+	if (!books) {
+		return;
+	};
 	let buttonClasses;
 	let buttonTitle;
 	const res = books.map(item => {
-		const { id, title, author, price, src, added } = item;
+		const { id, title, author, price, image, added } = item;
 		if (added) {
 			buttonClasses = "booksListItem__button booksListItem__button_added";
 			buttonTitle = "Remove this book from your cart";
@@ -18,7 +21,7 @@ const BooksListItem = ({ books }) => {
 		return (
 			<div className="booksListItem__book" key={id}>
 				<div className="booksListItem__cover">
-					<img src={cover} alt="cover" />
+					<img src={image} alt="cover" />
 				</div>
 				<div className="booksListItem__descr">
 					<h4>{author}</h4>

@@ -3,7 +3,7 @@ import uuid from "react-uuid";
 export default class StoreService {
 	data = [
 		{
-			category: "JavaScript", active: false,
+			category: "JavaScript", active: true,
 			books: [
 				{
 					id: uuid(),
@@ -18,7 +18,7 @@ export default class StoreService {
 					title: "JavaScript: The Definitive Guide",
 					author: "David Flanagan",
 					price: 21,
-					coverImage: "https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/510JjoNTdOL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
+					image: "https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/510JjoNTdOL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
 					added: false,
 				}
 			],
@@ -39,7 +39,7 @@ export default class StoreService {
 					title: "Designing Web Interfaces",
 					author: " Bill Scott and Theresa Neil",
 					price: 16,
-					coverImage: "https://m.media-amazon.com/images/W/WEBP_402378-T1/images/I/812zYk3aYhL._AC_UY218_.jpg",
+					image: "https://m.media-amazon.com/images/W/WEBP_402378-T1/images/I/812zYk3aYhL._AC_UY218_.jpg",
 					added: false,
 				}
 			],
@@ -60,7 +60,7 @@ export default class StoreService {
 					title: "The Art of Readable Code",
 					author: " Dustin Boswell and Trevor Foucher",
 					price: 37,
-					coverImage: "https://m.media-amazon.com/images/W/WEBP_402378-T1/images/I/81juM+1k56L._AC_UY218_.jpg",
+					image: "https://m.media-amazon.com/images/W/WEBP_402378-T1/images/I/81juM+1k56L._AC_UY218_.jpg",
 					added: false,
 				}
 			],

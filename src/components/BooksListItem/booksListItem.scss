@@ -40,7 +40,7 @@
 		border: 1px solid brown;
 		border-radius: 0px 7px 7px 0px;
 		border-left: none;
-
+		background: Wheat;
 
 
 		h3 {
@@ -52,17 +52,20 @@
 			overflow: hidden;
 			text-overflow: ellipsis;
 			text-decoration: underline 1px;
+			background: Wheat;
 		}
 
 		h4 {
 			font-style: italic;
 			font-size: 16px;
 			color: rgb(58, 58, 58);
+			background: Wheat;
 		}
 
 		p {
 			color: red;
 			font-weight: bolder;
+			background: Wheat;
 		}
 	}
 
@@ -80,6 +83,7 @@
 		align-items: center;
 		cursor: pointer;
 		user-select: none;
+		// background: Wheat;
 
 		&:hover {
 			transform: scale(1.1);

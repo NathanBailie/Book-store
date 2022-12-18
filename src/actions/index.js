@@ -1,7 +1,11 @@
 import {
-	booksLoaded
+	dataLoaded,
+	dataRequested,
+	dataError
 } from './actions';
 
 export {
-	booksLoaded
+	dataLoaded,
+	dataRequested,
+	dataError
 };
