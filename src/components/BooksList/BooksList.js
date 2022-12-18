@@ -3,7 +3,7 @@ import BooksListItem from '../BooksListItem';
 import Spinner from '../Spinner';
 import ErrorIndicator from '../ErrorIndicator';
 import { WithStoreService } from '../HOC';
-import { dataLoaded, dataRequested, dataError } from '../../actions';
+import { fetchData } from '../../actions';
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { compose } from '../../utils';
@@ -47,13 +47,7 @@ const mapStateToProps = ({ data, loading, error }) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
 	const { storeService } = ownProps;
 	return {
-		fetchData: () => {
-			dispatch(dataRequested());
-			storeService
-				.getData()
-				.then((response) => { dispatch(dataLoaded(response)) })
-				.catch((error) => dispatch(dataError(error)))
-		}
+		fetchData: fetchData(storeService, dispatch)
 	};
 };
 

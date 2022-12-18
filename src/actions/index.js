@@ -1,11 +1,7 @@
 import {
-	dataLoaded,
-	dataRequested,
-	dataError
+	fetchData
 } from './actions';
 
 export {
-	dataLoaded,
-	dataRequested,
-	dataError
+	fetchData
 };

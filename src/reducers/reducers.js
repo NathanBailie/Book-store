@@ -6,19 +6,19 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
 	switch (action.type) {
-		case 'DATA_REQUESTED':
+		case 'FETCH_DATA_REQUEST':
 			return {
 				data: [],
 				loading: true,
 				error: false
 			};
-		case 'DATA_LOADED':
+		case 'FETCH_DATA_SUCCESS':
 			return {
 				data: action.payload,
 				loading: false,
 				error: false
 			};
-		case 'DATA_ERROR':
+		case 'FETCH_DATA_ERROR':
 			return {
 				data: [],
 				loading: false,

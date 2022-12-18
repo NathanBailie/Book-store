@@ -1,23 +1,29 @@
 const dataRequested = () => {
 	return {
-		type: 'DATA_REQUESTED'
+		type: 'FETCH_DATA_REQUEST'
 	};
 };
 const dataLoaded = (newData) => {
 	return {
-		type: 'DATA_LOADED',
+		type: 'FETCH_DATA_SUCCESS',
 		payload: newData
 	};
 };
 const dataError = (error) => {
 	return {
-		type: 'DATA_ERROR',
+		type: 'FETCH_DATA_ERROR',
 		payload: error
 	};
 };
 
+const fetchData = (storeService, dispatch) => () => {
+	dispatch(dataRequested());
+	storeService
+		.getData()
+		.then((response) => { dispatch(dataLoaded(response)) })
+		.catch((error) => dispatch(dataError(error)))
+}
+
 export {
-	dataLoaded,
-	dataRequested,
-	dataError
+	fetchData
 };
