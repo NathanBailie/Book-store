@@ -15,6 +15,12 @@ const dataError = (error) => {
 		payload: error
 	};
 };
+const onChangeActiveCategory = (id) => {
+	return {
+		type: 'ON_CHANGE_ACTIVE_CATEGORY',
+		payload: id
+	};
+};
 
 const fetchData = (storeService, dispatch) => () => {
 	dispatch(dataRequested());
@@ -25,5 +31,6 @@ const fetchData = (storeService, dispatch) => () => {
 }
 
 export {
-	fetchData
+	fetchData,
+	onChangeActiveCategory,
 };

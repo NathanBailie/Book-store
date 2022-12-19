@@ -25,7 +25,7 @@
 			width: 100%;
 			object-fit: cover;
 			border-radius: 7px 0px 0px 7px;
-
+			user-select: none;
 		}
 	}
 
@@ -66,6 +66,7 @@
 			color: red;
 			font-weight: bolder;
 			background: Wheat;
+			user-select: none;
 		}
 	}
 

@@ -1,40 +1,26 @@
 import './header.scss';
-// import { WithStoreService } from '../HOC';
-import { useState } from 'react';
+import { connect } from 'react-redux';
+import { onChangeActiveCategory, } from '../../actions';
 
-const Header = () => {
-	const allLinks = [
-		{ name: "JavaScript", active: false },
-		{ name: "Interfaces", active: false },
-		{ name: "Another", active: false },
-	];
-
-	const [links, setLinks] = useState(allLinks);
-
-	function onChangeProp(id) {
-		const newLinks = links.map((link, index) => {
-			if (id === index) {
-				return { ...link, ['active']: true };
-			}
-			return { ...link, ['active']: false }
-		});
-		setLinks(newLinks);
-	};
-
-	const result = links.map((link, index) => {
+const Header = ({ data, onChangeActiveCategory }) => {
+	const result = data.map((item) => {
+		const { category, active, id } = item;
 		let linkClasses;
-		if (link.active) {
+		if (active) {
 			linkClasses = "header__link header__link_active";
 		} else {
 			linkClasses = "header__link";
 		}
+
 		return (
 			<a
 				href="#"
-				key={index}
+				key={id}
 				className={linkClasses}
-				onClick={() => onChangeProp(index)}>
-				{link.name}
+				onClick={() => {
+					onChangeActiveCategory(id)
+				}}>
+				{category}
 			</a>
 		);
 	});
@@ -46,4 +32,15 @@ const Header = () => {
 	);
 };
 
-export default Header;
+const mapStateToProps = ({ data, active }) => {
+	return { data, active }
+};
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		onChangeActiveCategory: (category) => { dispatch(onChangeActiveCategory(category)) }
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)
+	(Header);

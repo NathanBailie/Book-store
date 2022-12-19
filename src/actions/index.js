@@ -1,7 +1,9 @@
 import {
-	fetchData
+	fetchData,
+	onChangeActiveCategory,
 } from './actions';
 
 export {
-	fetchData
+	fetchData,
+	onChangeActiveCategory,
 };

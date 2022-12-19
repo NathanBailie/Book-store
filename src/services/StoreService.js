@@ -3,7 +3,9 @@ import uuid from "react-uuid";
 export default class StoreService {
 	data = [
 		{
-			category: "JavaScript", active: true,
+			category: "JavaScript",
+			active: false,
+			id: uuid(),
 			books: [
 				{
 					id: uuid(),
@@ -24,7 +26,9 @@ export default class StoreService {
 			],
 		},
 		{
-			category: "Interfaces", active: false,
+			category: "Interfaces",
+			active: false,
+			id: uuid(),
 			books: [
 				{
 					id: uuid(),
@@ -45,7 +49,9 @@ export default class StoreService {
 			],
 		},
 		{
-			category: "Another", active: false,
+			category: "Another",
+			active: false,
+			id: uuid(),
 			books: [
 				{
 					id: uuid(),

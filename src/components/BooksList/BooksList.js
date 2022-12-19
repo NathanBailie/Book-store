@@ -1,5 +1,6 @@
 import './booksList.scss';
 import BooksListItem from '../BooksListItem';
+import ShoppingCart from '../ShoppingCart';
 import Spinner from '../Spinner';
 import ErrorIndicator from '../ErrorIndicator';
 import { WithStoreService } from '../HOC';
@@ -19,9 +20,11 @@ const BooksList = ({ data, loading, error, fetchData }) => {
 	useEffect(() => {
 		if (data.length > 0) {
 			const activeItem = data.filter(item => item.active === true);
-			const [{ books }] = activeItem;
-			setBooks(books);
-		}
+			if (activeItem.length > 0) {
+				const [{ books }] = activeItem;
+				setBooks(books);
+			};
+		};
 	}, [data]);
 
 
@@ -33,9 +36,12 @@ const BooksList = ({ data, loading, error, fetchData }) => {
 	};
 	if (!loading && !error) {
 		return (
-			<div className="booksList">
-				<BooksListItem books={books} />
-			</div>
+			<>
+				<div className="booksList">
+					<BooksListItem books={books} />
+				</div>
+				<ShoppingCart />
+			</>
 		);
 	};
 };
