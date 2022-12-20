@@ -1,9 +1,17 @@
 import {
-	fetchData,
 	onChangeActiveCategory,
+	onAddBookToCart,
+	onReduceTheCountOfTheBook,
+	onIncreaseTheCountOfTheBook,
+	onRemoveBookFromTheCart,
+	fetchData,
 } from './actions';
 
 export {
-	fetchData,
 	onChangeActiveCategory,
+	onAddBookToCart,
+	onReduceTheCountOfTheBook,
+	onIncreaseTheCountOfTheBook,
+	onRemoveBookFromTheCart,
+	fetchData,
 };

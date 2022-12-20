@@ -1,6 +1,6 @@
 import './header.scss';
 import { connect } from 'react-redux';
-import { onChangeActiveCategory, } from '../../actions';
+import { onChangeActiveCategory } from '../../actions';
 
 const Header = ({ data, onChangeActiveCategory }) => {
 	const result = data.map((item) => {

@@ -4,7 +4,7 @@ export default class StoreService {
 	data = [
 		{
 			category: "JavaScript",
-			active: false,
+			active: true,
 			id: uuid(),
 			books: [
 				{
@@ -13,7 +13,6 @@ export default class StoreService {
 					author: "Nick Morgan",
 					price: 20,
 					image: "https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/51YfamJFhkL._SX376_BO1,204,203,200_.jpg",
-					added: false,
 				},
 				{
 					id: uuid(),
@@ -21,7 +20,6 @@ export default class StoreService {
 					author: "David Flanagan",
 					price: 21,
 					image: "https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/510JjoNTdOL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
-					added: false,
 				}
 			],
 		},
@@ -36,7 +34,6 @@ export default class StoreService {
 					author: "Robin Williams",
 					price: 26,
 					image: "https://m.media-amazon.com/images/W/WEBP_402378-T1/images/I/51ZPzTBa5bL._AC_UY218_.jpg",
-					added: false,
 				},
 				{
 					id: uuid(),
@@ -44,7 +41,6 @@ export default class StoreService {
 					author: " Bill Scott and Theresa Neil",
 					price: 16,
 					image: "https://m.media-amazon.com/images/W/WEBP_402378-T1/images/I/812zYk3aYhL._AC_UY218_.jpg",
-					added: false,
 				}
 			],
 		},
@@ -60,6 +56,7 @@ export default class StoreService {
 					price: 31,
 					image: "https://m.media-amazon.com/images/W/WEBP_402378-T1/images/I/41xShlnTZTL._AC_UY218_.jpg",
 					added: false,
+					count: 0,
 				},
 				{
 					id: uuid(),
@@ -68,6 +65,7 @@ export default class StoreService {
 					price: 37,
 					image: "https://m.media-amazon.com/images/W/WEBP_402378-T1/images/I/81juM+1k56L._AC_UY218_.jpg",
 					added: false,
+					count: 0,
 				}
 			],
 		},
@@ -76,7 +74,7 @@ export default class StoreService {
 	getData() {
 		return new Promise((resolve, reject) => {
 			setTimeout(() => {
-				if (Math.random() > 0.80) {
+				if (Math.random() >= 0.90) {
 					reject(new Error('Something has gone wrong!'))
 				} else {
 					resolve(this.data)

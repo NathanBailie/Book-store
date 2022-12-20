@@ -11,7 +11,7 @@ import { compose } from '../../utils';
 
 
 const BooksList = ({ data, loading, error, fetchData }) => {
-	const [books, setBooks] = useState();
+	const [books, setBooks] = useState([]);
 
 	useEffect(() => {
 		fetchData()
@@ -38,7 +38,8 @@ const BooksList = ({ data, loading, error, fetchData }) => {
 		return (
 			<>
 				<div className="booksList">
-					<BooksListItem books={books} />
+					<BooksListItem
+						books={books} />
 				</div>
 				<ShoppingCart />
 			</>

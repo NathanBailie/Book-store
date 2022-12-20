@@ -17,8 +17,32 @@ const dataError = (error) => {
 };
 const onChangeActiveCategory = (id) => {
 	return {
-		type: 'ON_CHANGE_ACTIVE_CATEGORY',
+		type: 'CHANGE_ACTIVE_CATEGORY',
 		payload: id
+	};
+};
+const onAddBookToCart = bookId => {
+	return {
+		type: 'ADD_BOOK_TO_CART',
+		payload: bookId
+	};
+};
+const onReduceTheCountOfTheBook = (bookId) => {
+	return {
+		type: 'REDUCE_THE_COUNT_OF_THE_BOOK',
+		payload: bookId
+	};
+};
+const onIncreaseTheCountOfTheBook = (bookId) => {
+	return {
+		type: 'INCREASE_THE_COUNT_OF_THE_BOOK',
+		payload: bookId
+	};
+};
+const onRemoveBookFromTheCart = (bookId) => {
+	return {
+		type: 'REMOVE_THE_BOOK_FROM_THE_CART',
+		payload: bookId
 	};
 };
 
@@ -31,6 +55,10 @@ const fetchData = (storeService, dispatch) => () => {
 }
 
 export {
-	fetchData,
 	onChangeActiveCategory,
+	onAddBookToCart,
+	onReduceTheCountOfTheBook,
+	onIncreaseTheCountOfTheBook,
+	onRemoveBookFromTheCart,
+	fetchData,
 };

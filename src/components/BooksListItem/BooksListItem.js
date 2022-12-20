@@ -1,17 +1,18 @@
 import './booksListItem.scss';
-import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { onAddBookToCart } from '../../actions';
 // import cover from './cover.jpg';
 
-const BooksListItem = ({ books }) => {
+const BooksListItem = ({ books, onAddBookToCart, booksInCart }) => {
 	if (!books) {
 		return;
 	};
 	let buttonClasses;
 	let buttonTitle;
 	const res = books.map(item => {
-		const { id, title, author, price, image, added } = item;
-		if (added) {
+		const { id, title, author, price, image } = item;
+		const inspect = booksInCart.find(item => item.id === id);
+		if (inspect) {
 			buttonClasses = "booksListItem__button booksListItem__button_added";
 			buttonTitle = "Remove this book from your cart";
 		} else {
@@ -29,7 +30,8 @@ const BooksListItem = ({ books }) => {
 					<p>${price}</p>
 					<button
 						className={buttonClasses}
-						title={buttonTitle}>
+						title={buttonTitle}
+						onClick={() => onAddBookToCart(id)}>
 						<span></span>
 						<span></span>
 					</button>
@@ -45,4 +47,15 @@ const BooksListItem = ({ books }) => {
 	);
 };
 
-export default BooksListItem;
+const mapStateToProps = ({ booksInCart }) => {
+	return { booksInCart }
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+	return {
+		onAddBookToCart: (categoryId, bookId) => dispatch(onAddBookToCart(categoryId, bookId))
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)
+	(BooksListItem);
