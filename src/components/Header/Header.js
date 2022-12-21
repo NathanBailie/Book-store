@@ -2,16 +2,16 @@ import './header.scss';
 import { connect } from 'react-redux';
 import { onChangeActiveCategory } from '../../actions';
 
-const Header = ({ data, onChangeActiveCategory }) => {
+const Header = ({ data, activeCategory, onChangeActiveCategory }) => {
 	const result = data.map((item) => {
-		const { category, active, id } = item;
+		const { category, id } = item;
+		const inspect = activeCategory.findIndex(item => item.id === id);
 		let linkClasses;
-		if (active) {
+		if (inspect !== -1) {
 			linkClasses = "header__link header__link_active";
 		} else {
 			linkClasses = "header__link";
 		}
-
 		return (
 			<a
 				href="#"
@@ -32,8 +32,8 @@ const Header = ({ data, onChangeActiveCategory }) => {
 	);
 };
 
-const mapStateToProps = ({ data, active }) => {
-	return { data, active }
+const mapStateToProps = ({ data, activeCategory }) => {
+	return { data, activeCategory }
 };
 
 const mapDispatchToProps = (dispatch) => {

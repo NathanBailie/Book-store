@@ -4,12 +4,15 @@ import plus from './plus.png';
 import remove from './remove.png';
 import { connect } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { onReduceTheCountOfTheBook, onIncreaseTheCountOfTheBook, onRemoveBookFromTheCart } from '../../actions';
+import { onReduceTheCountOfTheBook, onIncreaseTheCountOfTheBook, onRemoveTheBookFromTheCart } from '../../actions';
 
-const ShoppingCart = ({ booksInCart, data, onReduceTheCountOfTheBook, onIncreaseTheCountOfTheBook, onRemoveBookFromTheCart }) => {
+const ShoppingCart = ({ booksInCart, onReduceTheCountOfTheBook, onIncreaseTheCountOfTheBook, onRemoveTheBookFromTheCart }) => {
+	console.log(booksInCart)
+
 	if (booksInCart.length === 0) {
 		return;
 	}
+
 	// const [addedBooks, setAddedBooks] = useState([]);
 
 	// useEffect(() => {
@@ -25,10 +28,6 @@ const ShoppingCart = ({ booksInCart, data, onReduceTheCountOfTheBook, onIncrease
 	// 	};
 	// 	setAddedBooks(allBooks);
 	// }, [data]);
-
-	if (data.length === 0) {
-		return;
-	}
 
 	const result = booksInCart.map((book, index) => {
 		const { id, title, count, totalPrice } = book;
@@ -52,7 +51,7 @@ const ShoppingCart = ({ booksInCart, data, onReduceTheCountOfTheBook, onIncrease
 						<img
 							className="shoppingCart__remove" src={remove} alt="remove"
 							title="Remove this book from the cart"
-							onClick={() => onRemoveBookFromTheCart(id)} />
+							onClick={() => onRemoveTheBookFromTheCart(id)} />
 					</div>
 				</div>
 			</div>
@@ -73,15 +72,15 @@ const ShoppingCart = ({ booksInCart, data, onReduceTheCountOfTheBook, onIncrease
 	);
 };
 
-const mapStateToProps = ({ booksInCart, data }) => {
-	return { booksInCart, data };
+const mapStateToProps = ({ booksInCart }) => {
+	return { booksInCart };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
 		onIncreaseTheCountOfTheBook: (bookId) => dispatch(onIncreaseTheCountOfTheBook(bookId)),
 		onReduceTheCountOfTheBook: (bookId) => dispatch(onReduceTheCountOfTheBook(bookId)),
-		onRemoveBookFromTheCart: (bookId) => dispatch(onRemoveBookFromTheCart(bookId)),
+		onRemoveTheBookFromTheCart: (bookId) => dispatch(onRemoveTheBookFromTheCart(bookId)),
 	};
 };
 

@@ -5,28 +5,16 @@ import Spinner from '../Spinner';
 import ErrorIndicator from '../ErrorIndicator';
 import { WithStoreService } from '../HOC';
 import { fetchData } from '../../actions';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { compose } from '../../utils';
 
 
-const BooksList = ({ data, loading, error, fetchData }) => {
-	const [books, setBooks] = useState([]);
+const BooksList = ({ data, loading, error, activeCategory, fetchData }) => {
 
 	useEffect(() => {
 		fetchData()
 	}, []);
-
-	useEffect(() => {
-		if (data.length > 0) {
-			const activeItem = data.filter(item => item.active === true);
-			if (activeItem.length > 0) {
-				const [{ books }] = activeItem;
-				setBooks(books);
-			};
-		};
-	}, [data]);
-
 
 	if (loading) {
 		return <Spinner />;
@@ -34,12 +22,13 @@ const BooksList = ({ data, loading, error, fetchData }) => {
 	if (error) {
 		return <ErrorIndicator />;
 	};
-	if (!loading && !error) {
+	if (!loading && !error && activeCategory.length > 0) {
 		return (
 			<>
 				<div className="booksList">
 					<BooksListItem
-						books={books} />
+						books={activeCategory[0].books}
+					/>
 				</div>
 				<ShoppingCart />
 			</>
@@ -47,8 +36,8 @@ const BooksList = ({ data, loading, error, fetchData }) => {
 	};
 };
 
-const mapStateToProps = ({ data, loading, error }) => {
-	return { data, loading, error }
+const mapStateToProps = ({ data, loading, error, activeCategory }) => {
+	return { data, loading, error, activeCategory }
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {

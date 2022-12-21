@@ -39,7 +39,7 @@ const onIncreaseTheCountOfTheBook = (bookId) => {
 		payload: bookId
 	};
 };
-const onRemoveBookFromTheCart = (bookId) => {
+const onRemoveTheBookFromTheCart = (bookId) => {
 	return {
 		type: 'REMOVE_THE_BOOK_FROM_THE_CART',
 		payload: bookId
@@ -59,6 +59,6 @@ export {
 	onAddBookToCart,
 	onReduceTheCountOfTheBook,
 	onIncreaseTheCountOfTheBook,
-	onRemoveBookFromTheCart,
+	onRemoveTheBookFromTheCart,
 	fetchData,
 };

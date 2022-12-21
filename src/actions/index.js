@@ -3,7 +3,7 @@ import {
 	onAddBookToCart,
 	onReduceTheCountOfTheBook,
 	onIncreaseTheCountOfTheBook,
-	onRemoveBookFromTheCart,
+	onRemoveTheBookFromTheCart,
 	fetchData,
 } from './actions';
 
@@ -12,6 +12,6 @@ export {
 	onAddBookToCart,
 	onReduceTheCountOfTheBook,
 	onIncreaseTheCountOfTheBook,
-	onRemoveBookFromTheCart,
+	onRemoveTheBookFromTheCart,
 	fetchData,
 };

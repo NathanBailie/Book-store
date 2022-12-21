@@ -4,7 +4,6 @@ export default class StoreService {
 	data = [
 		{
 			category: "JavaScript",
-			active: true,
 			id: uuid(),
 			books: [
 				{
@@ -25,7 +24,6 @@ export default class StoreService {
 		},
 		{
 			category: "Interfaces",
-			active: false,
 			id: uuid(),
 			books: [
 				{
@@ -46,7 +44,6 @@ export default class StoreService {
 		},
 		{
 			category: "Another",
-			active: false,
 			id: uuid(),
 			books: [
 				{

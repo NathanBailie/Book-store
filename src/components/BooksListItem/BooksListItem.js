@@ -4,15 +4,15 @@ import { onAddBookToCart } from '../../actions';
 // import cover from './cover.jpg';
 
 const BooksListItem = ({ books, onAddBookToCart, booksInCart }) => {
-	if (!books) {
+	if (books.length === 0) {
 		return;
 	};
 	let buttonClasses;
 	let buttonTitle;
 	const res = books.map(item => {
 		const { id, title, author, price, image } = item;
-		const inspect = booksInCart.find(item => item.id === id);
-		if (inspect) {
+		const inspect = booksInCart.findIndex(item => item.id === id);
+		if (inspect !== -1) {
 			buttonClasses = "booksListItem__button booksListItem__button_added";
 			buttonTitle = "Remove this book from your cart";
 		} else {
@@ -53,7 +53,7 @@ const mapStateToProps = ({ booksInCart }) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
-		onAddBookToCart: (categoryId, bookId) => dispatch(onAddBookToCart(categoryId, bookId))
+		onAddBookToCart: (bookId) => dispatch(onAddBookToCart(bookId))
 	};
 };
 

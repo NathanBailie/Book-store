@@ -2,6 +2,7 @@ const initialState = {
 	data: [],
 	loading: true,
 	error: false,
+	activeCategory: [],
 	booksInCart: [],
 };
 
@@ -13,6 +14,7 @@ const reducer = (state = initialState, action) => {
 				data: [],
 				loading: true,
 				error: false,
+				booksInCart: [],
 			};
 		case 'FETCH_DATA_SUCCESS':
 			return {
@@ -20,6 +22,7 @@ const reducer = (state = initialState, action) => {
 				data: action.payload,
 				loading: false,
 				error: false,
+				booksInCart: [],
 			};
 		case 'FETCH_DATA_ERROR':
 			return {
@@ -27,68 +30,59 @@ const reducer = (state = initialState, action) => {
 				data: [],
 				loading: false,
 				error: action.payload,
+				booksInCart: [],
 			};
 		case 'CHANGE_ACTIVE_CATEGORY':
 			return {
 				...state,
-				data: state.data.map(item => {
-					if (item.id === action.payload) {
-						return { ...item, ['active']: true };
-					} else {
-						return { ...item, ['active']: false };
-					};
-				}),
+				activeCategory: state.data.filter(item => item.id === action.payload),
 			};
 		case 'ADD_BOOK_TO_CART':
-			const bookId = action.payload;
-			const { booksInCart } = state;
 			let chosenBook;
-
 			for (let item of state.data) {
 				for (let book of item.books) {
-					if (book.id === bookId) {
-						chosenBook = book;
+					if (book.id === action.payload) {
+						chosenBook = { id: book.id, title: book.title, count: 1, price: book.price, totalPrice: book.price, };
 					}
 				}
 			}
-			const { id, title, price } = chosenBook;
-			const index = booksInCart.findIndex(item => item.id === id);
+			const inspect = state.booksInCart.findIndex(book => book.id === action.payload);
 			let newBooksInChart;
-			if (index === -1) {
-				newBooksInChart = [...booksInCart, { id: id, title: title, count: 1, price: price, totalPrice: price, }
-				]
-			} else if (index > -1) {
-				newBooksInChart = [...booksInCart.slice(0, index), ...booksInCart.slice(index + 1)]
+			if (inspect === -1) {
+				newBooksInChart = [...state.booksInCart, chosenBook];
+			} else {
+				newBooksInChart = [...state.booksInCart.slice(0, inspect), ...state.booksInCart.slice(inspect + 1)];
 			}
-
 			return {
 				...state,
 				booksInCart: newBooksInChart,
-
 			};
 		case 'REDUCE_THE_COUNT_OF_THE_BOOK':
 			let result;
-			let bookIndex = state.booksInCart.findIndex(book => book.id === action.payload)
 			for (let book of state.booksInCart) {
 				if (book.id === action.payload) {
 					if (book.totalPrice === book.price) {
-						result = state.booksInCart.filter(book => book.id !== action.payload);
-					} else {
+						result = state.booksInCart.filter(book => book.id !== action.payload)
+					} else if (book.totalPrice > book.price) {
 						result = state.booksInCart.map(book => {
 							if (book.id === action.payload) {
 								return {
 									...book,
 									['count']: book['count'] - 1,
-									['totalPrice']: book['totalPrice'] - book['price'],
-								};
-							};
-						});
-					};
-				};
+									['totalPrice']: book['totalPrice'] - book['price']
+								}
+							} else {
+								return book;
+							}
+						})
+					}
+				}
 			}
+
 			return {
 				...state,
 				booksInCart: result
+
 			};
 		case 'INCREASE_THE_COUNT_OF_THE_BOOK':
 			return {
