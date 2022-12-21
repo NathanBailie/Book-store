@@ -32,7 +32,7 @@ const Header = ({ data, activeCategory, onChangeActiveCategory }) => {
 	);
 };
 
-const mapStateToProps = ({ data, activeCategory }) => {
+const mapStateToProps = ({ bookList: { data, activeCategory } }) => {
 	return { data, activeCategory }
 };
 

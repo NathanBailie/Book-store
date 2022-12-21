@@ -7,27 +7,9 @@ import { useState, useEffect } from 'react';
 import { onReduceTheCountOfTheBook, onIncreaseTheCountOfTheBook, onRemoveTheBookFromTheCart } from '../../actions';
 
 const ShoppingCart = ({ booksInCart, onReduceTheCountOfTheBook, onIncreaseTheCountOfTheBook, onRemoveTheBookFromTheCart }) => {
-	console.log(booksInCart)
-
 	if (booksInCart.length === 0) {
 		return;
 	}
-
-	// const [addedBooks, setAddedBooks] = useState([]);
-
-	// useEffect(() => {
-	// 	const allBooks = [];
-	// 	if (data.length > 0) {
-	// 		for (let item of data) {
-	// 			for (let book of item.books) {
-	// 				if (book.added) {
-	// 					allBooks.push(book);
-	// 				}
-	// 			}
-	// 		}
-	// 	};
-	// 	setAddedBooks(allBooks);
-	// }, [data]);
 
 	const result = booksInCart.map((book, index) => {
 		const { id, title, count, totalPrice } = book;
@@ -72,7 +54,7 @@ const ShoppingCart = ({ booksInCart, onReduceTheCountOfTheBook, onIncreaseTheCou
 	);
 };
 
-const mapStateToProps = ({ booksInCart }) => {
+const mapStateToProps = ({ shoppingCart: { booksInCart } }) => {
 	return { booksInCart };
 };
 

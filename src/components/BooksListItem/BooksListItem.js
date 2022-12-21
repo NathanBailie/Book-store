@@ -47,7 +47,7 @@ const BooksListItem = ({ books, onAddBookToCart, booksInCart }) => {
 	);
 };
 
-const mapStateToProps = ({ booksInCart }) => {
+const mapStateToProps = ({ shoppingCart: { booksInCart } }) => {
 	return { booksInCart }
 };
 

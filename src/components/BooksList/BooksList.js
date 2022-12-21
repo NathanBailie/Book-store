@@ -11,11 +11,9 @@ import { compose } from '../../utils';
 
 
 const BooksList = ({ data, loading, error, activeCategory, fetchData }) => {
-
 	useEffect(() => {
 		fetchData()
 	}, []);
-
 	if (loading) {
 		return <Spinner />;
 	};
@@ -36,7 +34,7 @@ const BooksList = ({ data, loading, error, activeCategory, fetchData }) => {
 	};
 };
 
-const mapStateToProps = ({ data, loading, error, activeCategory }) => {
+const mapStateToProps = ({ bookList: { data, loading, error, activeCategory } }) => {
 	return { data, loading, error, activeCategory }
 };
 
