@@ -1,16 +1,14 @@
-import './booksList.scss';
 import BooksListItem from '../BooksListItem';
 import ShoppingCart from '../ShoppingCart';
+import Main from '../Main';
 import Spinner from '../Spinner';
 import ErrorIndicator from '../ErrorIndicator';
-import Main from '../Main';
 import { WithStoreService } from '../HOC';
 import { fetchData } from '../../actions';
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { compose } from '../../utils';
 import { onChangeActiveCategory } from '../../actions';
-
 
 
 const BooksList = ({ data, loading, error, activeCategory, fetchData, onChangeActiveCategory, category }) => {
@@ -40,7 +38,7 @@ const BooksList = ({ data, loading, error, activeCategory, fetchData, onChangeAc
 			);
 		} else if (activeCategory.length === 0) {
 			return <Main />
-		}
+		};
 	};
 };
 

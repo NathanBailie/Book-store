@@ -5,6 +5,7 @@ import { onChangeActiveCategory } from '../../actions';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
+
 const Header = ({ data, activeCategory, onChangeActiveCategory }) => {
 	const [hambActive, setHambActive] = useState(false);
 	window.onresize = function (event) {
@@ -19,7 +20,8 @@ const Header = ({ data, activeCategory, onChangeActiveCategory }) => {
 			linkClasses = "header__link header__link_active";
 		} else {
 			linkClasses = "header__link";
-		}
+		};
+
 		return (
 			<Link
 				to={`/${category}/`}
@@ -33,8 +35,7 @@ const Header = ({ data, activeCategory, onChangeActiveCategory }) => {
 			</Link>
 		);
 	});
-	// header__wraper_active
-	// 
+
 	let hamburgerClasses;
 	let headerWraperClasses;
 	let coverClasses;
@@ -46,7 +47,8 @@ const Header = ({ data, activeCategory, onChangeActiveCategory }) => {
 		hamburgerClasses = "header__hamburger";
 		headerWraperClasses = "header__wraper";
 		coverClasses = "header__cover";
-	}
+	};
+
 	return (
 		<div className="header">
 			<nav className={headerWraperClasses}>

@@ -2,12 +2,13 @@ import './booksListItem.scss';
 import './media.scss';
 import { connect } from 'react-redux';
 import { onAddBookToCart } from '../../actions';
-// import cover from './cover.jpg';
+
 
 const BooksListItem = ({ books, onAddBookToCart, booksInCart }) => {
 	if (books.length === 0) {
 		return;
 	};
+
 	let buttonClasses;
 	let buttonTitle;
 	const res = books.map(item => {
@@ -19,7 +20,8 @@ const BooksListItem = ({ books, onAddBookToCart, booksInCart }) => {
 		} else {
 			buttonClasses = "booksListItem__button";
 			buttonTitle = "Add this book to your cart";
-		}
+		};
+
 		return (
 			<div className="booksListItem__book" key={id}>
 				<div className="booksListItem__cover">
@@ -38,8 +40,8 @@ const BooksListItem = ({ books, onAddBookToCart, booksInCart }) => {
 					</button>
 				</div>
 			</div>
-		)
-	})
+		);
+	});
 
 	return (
 		<div className="booksListItem">

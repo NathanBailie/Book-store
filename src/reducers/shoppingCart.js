@@ -3,8 +3,8 @@ const updateShoppingCart = (state, action) => {
 	if (state === undefined) {
 		return {
 			booksInCart: [],
-		}
-	}
+		};
+	};
 	switch (action.type) {
 		case 'ADD_BOOK_TO_CART':
 			let chosenBook;
@@ -12,20 +12,21 @@ const updateShoppingCart = (state, action) => {
 				for (let book of item.books) {
 					if (book.id === action.payload) {
 						chosenBook = { id: book.id, title: book.title, count: 1, price: book.price, totalPrice: book.price, };
-					}
-				}
-			}
+					};
+				};
+			};
 			const inspect = state.shoppingCart.booksInCart.findIndex(book => book.id === action.payload);
 			let newBooksInChart;
 			if (inspect === -1) {
 				newBooksInChart = [...state.shoppingCart.booksInCart, chosenBook];
 			} else {
 				newBooksInChart = [...state.shoppingCart.booksInCart.slice(0, inspect), ...state.shoppingCart.booksInCart.slice(inspect + 1)];
-			}
+			};
 			return {
 				...['shoppingCart'],
 				booksInCart: newBooksInChart,
 			};
+
 		case 'REDUCE_THE_COUNT_OF_THE_BOOK':
 			let result;
 			for (let book of state.shoppingCart.booksInCart) {
@@ -42,16 +43,16 @@ const updateShoppingCart = (state, action) => {
 								}
 							} else {
 								return book;
-							}
-						})
-					}
-				}
-			}
-
+							};
+						});
+					};
+				};
+			};
 			return {
 				...['shoppingCart'],
 				booksInCart: result,
 			};
+
 		case 'INCREASE_THE_COUNT_OF_THE_BOOK':
 			return {
 				...state,
@@ -66,6 +67,7 @@ const updateShoppingCart = (state, action) => {
 					return book;
 				})
 			};
+
 		case 'REMOVE_THE_BOOK_FROM_THE_CART':
 			return {
 				...['shoppingCart'],
@@ -73,7 +75,7 @@ const updateShoppingCart = (state, action) => {
 			};
 		default:
 			return state.shoppingCart;
-	}
-}
+	};
+};
 
 export default updateShoppingCart;

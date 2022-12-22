@@ -5,8 +5,8 @@ const updateBookList = (state, action) => {
 			loading: true,
 			error: false,
 			activeCategory: [],
-		}
-	}
+		};
+	};
 	switch (action.type) {
 		case 'FETCH_DATA_REQUEST':
 			return {
@@ -33,14 +33,12 @@ const updateBookList = (state, action) => {
 			let c = state['bookList'].data.filter(item => item.category === action.payload);
 			return {
 				...state['bookList'],
-
-				// activeCategory: state['bookList'].data.filter(item => item.id === action.payload),
 				activeCategory: state['bookList'].data.filter(item => item.category === action.payload),
 
 			};
 		default:
 			return state.bookList;
-	}
-}
+	};
+};
 
 export default updateBookList;

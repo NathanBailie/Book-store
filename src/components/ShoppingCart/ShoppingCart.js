@@ -4,14 +4,15 @@ import minus from './minus.png';
 import plus from './plus.png';
 import remove from './remove.png';
 import { connect } from 'react-redux';
-import { useState, useEffect } from 'react';
 import { onReduceTheCountOfTheBook, onIncreaseTheCountOfTheBook, onRemoveTheBookFromTheCart } from '../../actions';
+
 
 const ShoppingCart = ({ booksInCart, onReduceTheCountOfTheBook, onIncreaseTheCountOfTheBook, onRemoveTheBookFromTheCart }) => {
 	if (booksInCart.length === 0) {
 		return;
-	}
-	let fullOrder = booksInCart.reduce((sum, elem) => sum + elem.totalPrice, 0)
+	};
+	let fullOrder = booksInCart.reduce((sum, elem) => sum + elem.totalPrice, 0);
+
 	const result = booksInCart.map((book, index) => {
 		const { id, title, count, totalPrice } = book;
 		return (
@@ -38,8 +39,8 @@ const ShoppingCart = ({ booksInCart, onReduceTheCountOfTheBook, onIncreaseTheCou
 					</div>
 				</div>
 			</div>
-		)
-	})
+		);
+	});
 
 	return (
 		<div className="shoppingCart">
@@ -62,12 +63,10 @@ const mapStateToProps = ({ shoppingCart: { booksInCart } }) => {
 	return { booksInCart };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-	return {
-		onIncreaseTheCountOfTheBook: (bookId) => dispatch(onIncreaseTheCountOfTheBook(bookId)),
-		onReduceTheCountOfTheBook: (bookId) => dispatch(onReduceTheCountOfTheBook(bookId)),
-		onRemoveTheBookFromTheCart: (bookId) => dispatch(onRemoveTheBookFromTheCart(bookId)),
-	};
+const mapDispatchToProps = {
+	onIncreaseTheCountOfTheBook: onIncreaseTheCountOfTheBook,
+	onReduceTheCountOfTheBook: onReduceTheCountOfTheBook,
+	onRemoveTheBookFromTheCart: onRemoveTheBookFromTheCart,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)
