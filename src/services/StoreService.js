@@ -36,9 +36,29 @@ export default class StoreService {
 				{
 					id: uuid(),
 					title: "Designing Web Interfaces",
-					author: " Bill Scott and Theresa Neil",
+					author: "Bill Scott and Theresa Neil",
 					price: 16,
 					image: "https://m.media-amazon.com/images/W/WEBP_402378-T1/images/I/812zYk3aYhL._AC_UY218_.jpg",
+				}
+			],
+		},
+		{
+			category: "Algorithms",
+			id: uuid(),
+			books: [
+				{
+					id: uuid(),
+					title: "Introduction to Algorithms",
+					author: "Thomas H. Cormen",
+					price: 74,
+					image: "https://m.media-amazon.com/images/W/WEBP_402378-T1/images/I/41SNoh5ZhOL._SX440_BO1,204,203,200_.jpg",
+				},
+				{
+					id: uuid(),
+					title: "Grokking Algorithms",
+					author: "Aditya Bhargava",
+					price: 35,
+					image: "https://m.media-amazon.com/images/W/WEBP_402378-T1/images/I/51lIp433IVL._SX397_BO1,204,203,200_.jpg",
 				}
 			],
 		},
@@ -63,7 +83,7 @@ export default class StoreService {
 					image: "https://m.media-amazon.com/images/W/WEBP_402378-T1/images/I/81juM+1k56L._AC_UY218_.jpg",
 					added: false,
 					count: 0,
-				}
+				},
 			],
 		},
 	];

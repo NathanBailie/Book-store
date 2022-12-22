@@ -1,4 +1,5 @@
 import './booksListItem.scss';
+import './media.scss';
 import { connect } from 'react-redux';
 import { onAddBookToCart } from '../../actions';
 // import cover from './cover.jpg';

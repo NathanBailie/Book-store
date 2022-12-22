@@ -1,0 +1,13 @@
+@media (max-width: 320px) {
+	.booksListItem {
+		&__descr {
+			h4 {
+				font-size: 14px;
+			}
+
+			h3 {
+				font-size: 16px;
+			}
+		}
+	}
+}

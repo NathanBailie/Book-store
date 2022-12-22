@@ -1,15 +1,18 @@
 .booksListItem {
 	display: grid;
-	grid-template: auto / repeat(auto-fit, 300px);
+	grid-template: auto / repeat(auto-fit, minmax(auto, 300px));
 	gap: 15px;
 	justify-content: center;
+	width: 100%;
+	padding: 10px;
 
 	&__book {
 		display: flex;
-		width: 300px;
-		height: 180px;
+		max-width: 300px;
+		max-height: 180px;
 		text-align: center;
 		position: relative;
+		border-radius: 7px;
 	}
 
 	&__cover {

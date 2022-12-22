@@ -1,4 +1,5 @@
 const updateShoppingCart = (state, action) => {
+
 	if (state === undefined) {
 		return {
 			booksInCart: [],
@@ -49,8 +50,7 @@ const updateShoppingCart = (state, action) => {
 
 			return {
 				...['shoppingCart'],
-				booksInCart: result
-
+				booksInCart: result,
 			};
 		case 'INCREASE_THE_COUNT_OF_THE_BOOK':
 			return {

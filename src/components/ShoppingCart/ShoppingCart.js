@@ -1,4 +1,5 @@
 import './shoppingCart.scss';
+import './media.scss';
 import minus from './minus.png';
 import plus from './plus.png';
 import remove from './remove.png';
@@ -10,7 +11,7 @@ const ShoppingCart = ({ booksInCart, onReduceTheCountOfTheBook, onIncreaseTheCou
 	if (booksInCart.length === 0) {
 		return;
 	}
-
+	let fullOrder = booksInCart.reduce((sum, elem) => sum + elem.totalPrice, 0)
 	const result = booksInCart.map((book, index) => {
 		const { id, title, count, totalPrice } = book;
 		return (
@@ -50,6 +51,9 @@ const ShoppingCart = ({ booksInCart, onReduceTheCountOfTheBook, onIncreaseTheCou
 				<span className="shoppingCart__actions">Actions</span>
 			</div>
 			{result}
+			<div className="shoppingCart__totalPrice">
+				Total: <span>${fullOrder}</span>
+			</div>
 		</div>
 	);
 };

@@ -7,7 +7,8 @@ const ErrorIndicator = () => {
 	return (
 		<div className="errorIndicator">
 			<img src={error} alt="error" />
-			<p>Something went wrong!</p>
+			<h4>Ohh.. Something went wrong!</h4>
+			<p>Please, reload your page!</p>
 		</div>
 	);
 };

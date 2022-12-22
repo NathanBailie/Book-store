@@ -1,9 +1,7 @@
 import './app.scss';
 import './media.scss'
 import Header from '../Header';
-import Main from '../Pages/Main';
-import Books from '../Pages/Books';
-import Cart from '../Pages/Cart';
+import BookList from '../BooksList';
 import { Routes, Route } from 'react-router-dom';
 import { WithStoreService } from '../HOC';
 
@@ -11,21 +9,25 @@ import { WithStoreService } from '../HOC';
 const App = () => {
 	return (
 		<>
-			<Header />
 			<div className="app">
+				<Header />
 				<div className="container">
 					<Routes>
 						<Route
-							// path='/'
-							path='/main'
-							element={<Main />} />
-						<Route
-							// path='/bookList'
 							path='/'
-							element={<Books />} />
+							element={<BookList />} />
 						<Route
-							path='/cart'
-							element={<Cart />} />
+							path='/JavaScript'
+							element={<BookList category="JavaScript" />} />
+						<Route
+							path='/Interfaces'
+							element={<BookList category="Interfaces" />} />
+						<Route
+							path='/Algorithms'
+							element={<BookList category="Algorithms" />} />
+						<Route
+							path='/Another'
+							element={<BookList category="Another" />} />
 					</Routes>
 				</div>
 			</div>

@@ -1,7 +1,6 @@
 .shoppingCart {
 	max-width: 900px;
 	margin: 0 auto;
-	// border: 1px solid grey;
 	margin-top: 15px;
 
 	&__head,
@@ -66,10 +65,18 @@
 	&__buttons {
 		width: 100%;
 		display: flex;
+		flex-wrap: wrap;
 		justify-content: space-evenly;
+		align-items: center;
 		padding: 3px;
-		height: 30px;
+		min-height: 30px;
 		user-select: none;
+		gap: 3px;
+
+		img {
+			height: 25px;
+			width: 25px;
+		}
 	}
 
 	&__increase,
@@ -92,5 +99,10 @@
 		}
 	}
 
-
+	&__totalPrice {
+		margin: 15px 10px 0px auto;
+		text-align: right;
+		font-weight: bold;
+		user-select: none;
+	}
 }

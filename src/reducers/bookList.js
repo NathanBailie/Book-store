@@ -30,10 +30,13 @@ const updateBookList = (state, action) => {
 				activeCategory: [],
 			};
 		case 'CHANGE_ACTIVE_CATEGORY':
+			let c = state['bookList'].data.filter(item => item.category === action.payload);
 			return {
 				...state['bookList'],
 
-				activeCategory: state['bookList'].data.filter(item => item.id === action.payload),
+				// activeCategory: state['bookList'].data.filter(item => item.id === action.payload),
+				activeCategory: state['bookList'].data.filter(item => item.category === action.payload),
+
 			};
 		default:
 			return state.bookList;
