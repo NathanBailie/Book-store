@@ -8,19 +8,12 @@ import { fetchData } from '../../actions';
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { compose } from '../../utils';
-import { onChangeActiveCategory } from '../../actions';
 
 
-const BooksList = ({ data, loading, error, activeCategory, fetchData, onChangeActiveCategory, category }) => {
+const BooksList = ({ data, loading, error, activeCategory, fetchData, }) => {
 	useEffect(() => {
 		fetchData()
 	}, []);
-
-	useEffect(() => {
-		if (data.length > 0 && category) {
-			onChangeActiveCategory(category)
-		}
-	}, [data, category]);
 
 	if (loading) { return <Spinner /> };
 	if (error) { return <ErrorIndicator /> };
@@ -50,7 +43,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 	const { storeService } = ownProps;
 	return {
 		fetchData: fetchData(storeService, dispatch),
-		onChangeActiveCategory: (category) => { dispatch(onChangeActiveCategory(category)) }
 	};
 };
 

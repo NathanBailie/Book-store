@@ -33,7 +33,7 @@ const updateBookList = (state, action) => {
 			let c = state['bookList'].data.filter(item => item.category === action.payload);
 			return {
 				...state['bookList'],
-				activeCategory: state['bookList'].data.filter(item => item.category === action.payload),
+				activeCategory: state['bookList'].data.filter(item => item.id === action.payload),
 
 			};
 		default:

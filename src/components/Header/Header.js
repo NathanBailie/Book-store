@@ -2,7 +2,6 @@ import './header.scss';
 import './media.scss'
 import { connect } from 'react-redux';
 import { onChangeActiveCategory } from '../../actions';
-import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
 
@@ -23,16 +22,15 @@ const Header = ({ data, activeCategory, onChangeActiveCategory }) => {
 		};
 
 		return (
-			<Link
-				to={`/${category}/`}
+			<span
 				key={id}
 				className={linkClasses}
 				onClick={() => {
-					onChangeActiveCategory(category);
+					onChangeActiveCategory(id);
 					setHambActive(false)
 				}}>
 				{category}
-			</Link>
+			</span>
 		);
 	});
 
@@ -72,10 +70,8 @@ const mapStateToProps = ({ bookList: { data, activeCategory } }) => {
 	return { data, activeCategory }
 };
 
-const mapDispatchToProps = (dispatch) => {
-	return {
-		onChangeActiveCategory: (category) => { dispatch(onChangeActiveCategory(category)) }
-	};
+const mapDispatchToProps = {
+	onChangeActiveCategory: onChangeActiveCategory
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)
