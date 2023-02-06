@@ -12,7 +12,7 @@ import { compose } from '../../utils';
 
 const BooksList = ({ data, loading, error, activeCategory, fetchData, }) => {
 	useEffect(() => {
-		fetchData()
+		fetchData();
 	}, []);
 
 	if (loading) { return <Spinner /> };

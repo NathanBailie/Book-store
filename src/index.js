@@ -7,7 +7,6 @@ import store from './store';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router } from 'react-router-dom';
 
 const storeService = new StoreService();
 
@@ -17,9 +16,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 	<Provider store={store}>
 		<ErrorBoundary>
 			<StoreServiceProvider value={storeService}>
-				<Router>
-					<App />
-				</Router>
+				<App />
 			</StoreServiceProvider>
 		</ErrorBoundary>
 	</Provider>
